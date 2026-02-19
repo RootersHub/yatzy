@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yatzy Game</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Yatzy Game</h1>
+            <div class="game-info">
+                <div class="turn-info">
+                    <span>Turn: <span id="current-turn">1</span>/13</span>
+                    <span>Roll: <span id="current-roll">1</span>/3</span>
+                </div>
+                <button id="new-game-btn" class="btn btn-secondary">New Game</button>
+            </div>
+        </header>
+
+        <main class="game-board">
+            <!-- Dice Section -->
+            <section class="dice-section">
+                <div class="dice-container">
+                    <div class="dice" data-index="0">
+                        <div class="dice-face" id="dice-0">
+                            <div class="dot"></div>
+                        </div>
+                        <div class="dice-label">Hold</div>
+                    </div>
+                    <div class="dice" data-index="1">
+                        <div class="dice-face" id="dice-1">
+                            <div class="dot"></div>
+                        </div>
+                        <div class="dice-label">Hold</div>
+                    </div>
+                    <div class="dice" data-index="2">
+                        <div class="dice-face" id="dice-2">
+                            <div class="dot"></div>
+                        </div>
+                        <div class="dice-label">Hold</div>
+                    </div>
+                    <div class="dice" data-index="3">
+                        <div class="dice-face" id="dice-3">
+                            <div class="dot"></div>
+                        </div>
+                        <div class="dice-label">Hold</div>
+                    </div>
+                    <div class="dice" data-index="4">
+                        <div class="dice-face" id="dice-4">
+                            <div class="dot"></div>
+                        </div>
+                        <div class="dice-label">Hold</div>
+                    </div>
+                </div>
+                
+                <div class="dice-controls">
+                    <button id="roll-btn" class="btn btn-primary">Roll Dice</button>
+                    <button id="release-all-btn" class="btn btn-secondary">Release All</button>
+                </div>
+            </section>
+
+            <!-- Scorecard Section -->
+            <section class="scorecard-section">
+                <table class="scorecard">
+                    <thead>
+                        <tr>
+                            <th>Category</th>
+                            <th>Score</th>
+                            <th>Potential</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Upper Section -->
+                        <tr class="section-header">
+                            <td colspan="3"><strong>Upper Section</strong></td>
+                        </tr>
+                        <tr class="score-row" data-category="ones">
+                            <td>Ones</td>
+                            <td class="score-cell" id="score-ones">-</td>
+                            <td class="potential-cell" id="potential-ones">0</td>
+                        </tr>
+                        <tr class="score-row" data-category="twos">
+                            <td>Twos</td>
+                            <td class="score-cell" id="score-twos">-</td>
+                            <td class="potential-cell" id="potential-twos">0</td>
+                        </tr>
+                        <tr class="score-row" data-category="threes">
+                            <td>Threes</td>
+                            <td class="score-cell" id="score-threes">-</td>
+                            <td class="potential-cell" id="potential-threes">0</td>
+                        </tr>
+                        <tr class="score-row" data-category="fours">
+                            <td>Fours</td>
+                            <td class="score-cell" id="score-fours">-</td>
+                            <td class="potential-cell" id="potential-fours">0</td>
+                        </tr>
+                        <tr class="score-row" data-category="fives">
+                            <td>Fives</td>
+                            <td class="score-cell" id="score-fives">-</td>
+                            <td class="potential-cell" id="potential-fives">0</td>
+                        </tr>
+                        <tr class="score-row" data-category="sixes">
+                            <td>Sixes</td>
+                            <td class="score-cell" id="score-sixes">-</td>
+                            <td class="potential-cell" id="potential-sixes">0</td>
+                        </tr>
+                        <tr class="subtotal-row">
+                            <td><strong>Upper Subtotal</strong></td>
+                            <td class="score-cell" id="upper-subtotal">0</td>
+                            <td></td>
+                        </tr>
+                        <tr class="bonus-row">
+                            <td><strong>Bonus (63+)</strong></td>
+                            <td class="score-cell" id="bonus">0</td>
+                            <td></td>
+                        </tr>
+                        <tr class="total-row">
+                            <td><strong>Upper Total</strong></td>
+                            <td class="score-cell" id="upper-total">0</td>
+                            <td></td>
+                        </tr>
+
+                        <!-- Lower Section -->
+                        <tr class="section-header">
+                            <td colspan="3"><strong>Lower Section</strong></td>
+                        </tr>
+                        <tr class="score-row" data-category="three-of-a-kind">
+                            <td>Three of a Kind</td>
+                            <td class="score-cell" id="score-three-of-a-kind">-</td>
+                            <td class="potential-cell" id="potential-three-of-a-kind">0</td>
+                        </tr>
+                        <tr class="score-row" data-category="four-of-a-kind">
+                            <td>Four of a Kind</td>
+                            <td class="score-cell" id="score-four-of-a-kind">-</td>
+                            <td class="potential-cell" id="potential-four-of-a-kind">0</td>
+                        </tr>
+                        <tr class="score-row" data-category="full-house">
+                            <td>Full House</td>
+                            <td class="score-cell" id="score-full-house">-</td>
+                            <td class="potential-cell" id="potential-full-house">0</td>
+                        </tr>
+                        <tr class="score-row" data-category="small-straight">
+                            <td>Small Straight</td>
+                            <td class="score-cell" id="score-small-straight">-</td>
+                            <td class="potential-cell" id="potential-small-straight">0</td>
+                        </tr>
+                        <tr class="score-row" data-category="large-straight">
+                            <td>Large Straight</td>
+                            <td class="score-cell" id="score-large-straight">-</td>
+                            <td class="potential-cell" id="potential-large-straight">0</td>
+                        </tr>
+                        <tr class="score-row" data-category="yatzy">
+                            <td>Yatzy</td>
+                            <td class="score-cell" id="score-yatzy">-</td>
+                            <td class="potential-cell" id="potential-yatzy">0</td>
+                        </tr>
+                        <tr class="score-row" data-category="chance">
+                            <td>Chance</td>
+                            <td class="score-cell" id="score-chance">-</td>
+                            <td class="potential-cell" id="potential-chance">0</td>
+                        </tr>
+                        <tr class="total-row">
+                            <td><strong>Lower Total</strong></td>
+                            <td class="score-cell" id="lower-total">0</td>
+                            <td></td>
+                        </tr>
+                        <tr class="grand-total-row">
+                            <td><strong>Grand Total</strong></td>
+                            <td class="score-cell" id="grand-total">0</td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </main>
+
+        <!-- Game Over Modal -->
+        <div id="game-over-modal" class="modal hidden">
+            <div class="modal-content">
+                <h2>Game Over!</h2>
+                <p>Final Score: <span id="final-score">0</span></p>
+                <button id="play-again-btn" class="btn btn-primary">Play Again</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
